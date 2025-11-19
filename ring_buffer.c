@@ -29,7 +29,7 @@ ring_buffer_t ring_buffer_init() {
  */
 uint8_t ring_buffer_empty(ring_buffer_t buffer)
 {
-    if(buffer->head == buffer->tail) {
+    if( ( (buffer->head + 1) % RING_BUFFER_LENGTH ) == buffer->tail) {
         return 1;
     } else {
         return ERR_EMPTY_FULL;
